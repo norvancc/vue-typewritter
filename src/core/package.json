@@ -1,0 +1,14 @@
+{
+  "name": "typewritter",
+  "version": "1.0.0",
+  "description": "This is a typewritter effect for vue3 and typescript",
+  "main": "index.ts",
+  "keywords": [
+    "typescript",
+    "typewritter",
+    "vue3",
+    "vue"
+  ],
+  "author": "Norvan CC",
+  "license": "MIT"
+}
