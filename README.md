@@ -1,9 +1,9 @@
 <p align="center">
 <a href="https://github.com/norvancc/typewritter#gh-light-mode-only">
-  <img src="https://github.com/norvancc/typewritter/public/logo_light.png#gh-light-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
+  <img src="https://github.com/norvancc/typewritter/blob/main/public/logo_light.png#gh-light-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
 </a>
 <a href="https://github.com/norvancc/typewritter#gh-dark-mode-only">
-  <img src="https://github.com/norvancc/typewritter/public/logo_dark.png#gh-dark-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
+  <img src="https://github.com/norvancc/typewritter/blob/main/public/logo_dark.png#gh-dark-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
 </a>
 <br>
  A typewritter effect for vue3 and typescript
@@ -12,8 +12,8 @@
 ## 🚀 Features
 
 - 📝 Pure string input support
-- <img src="[.](https://github.com/norvancc/typewritter)/public/vue.svg" width="14"> Vue component support
-- <img src="https://github.com/norvancc/typewritter/public/tsx.svg" width="14"> TSX/JSX grammer support
+- <img src="[.]https://github.com/norvancc/typewritter/blob/main/public/vue.svg" width="14"> Vue component support
+- <img src="https://github.com/norvancc/typewritter/blob/main/public/tsx.svg" width="14"> TSX/JSX grammer support
 - 🔫 Customizable styles for each step
 - 🚀 Each step supports custom speed
 - 🚅 Chain call support
@@ -95,4 +95,4 @@ Not yet.
 
 ## 📄 License
 
-[MIT License](https://github.com/norvancc/typewritter/LICENSE) © 2024-PRESENT [Norvan CC](https://norvan.cc)
+[MIT License](https://github.com/norvancc/typewritter/blob/main/LICENSE) © 2024-PRESENT [Norvan CC](https://norvan.cc)
