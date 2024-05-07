@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build:core": "tsc --outDir src/core/dist src/core/*.ts && uglifyjs src/core/dist/*.js -o src/core/dist/typewritter.min.js -c -m",
+    "build:run": "cd src/core && esno scripts/build.ts",
+    "build:core": "tsc --outDir src/core/dist src/core/*.ts",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -21,7 +22,7 @@
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/jsdom": "^21.1.6",
-    "@types/node": "^20.12.5",
+    "@types/node": "^20.12.10",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "^2.4.5",

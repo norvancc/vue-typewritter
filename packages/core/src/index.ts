@@ -1,11 +1,11 @@
 import { Ref, ref, RendererNode } from 'vue';
 import { CallbackQueue } from './CallbackQueue';
-import { Callback, TPopTextOptions, TSetTextOptions, TTextOptions, TTypewriterOptions } from './types';
+import { Callback, TPopTextOptions, TSetTextOptions, TTextOptions, TTypewriterOptions } from '../types/types';
 import { parseJSXToDocument, parseRendererNodeToDocument, sleep } from './utils';
-import { JSX } from 'vue/jsx-runtime';
 
 type TTypewritterReturnType = {
   wait: (ms: number) => TTypewritterReturnType;
+  // @ts-ignore
   setText: (text: string | JSX.Element | RendererNode, options?: TSetTextOptions) => TTypewritterReturnType;
   popText: (length: number, options?: TPopTextOptions) => TTypewritterReturnType;
   setSpeed: (speed: number) => TTypewritterReturnType;
@@ -148,13 +148,16 @@ export class Typewriter {
    * @param text The text to be displayed
    * @returns The Typewriter instance
    */
+  // @ts-ignore
   setText(text: string | JSX.Element | RendererNode, options?: TSetTextOptions): TTypewritterReturnType {
     if ((text as RendererNode).render) {
       const element = parseRendererNodeToDocument(text as RendererNode);
       if (element) {
         this._queue.enqueue(this._setText.bind(this, element, options));
       }
+      // @ts-ignore
     } else if ((text as JSX.Element).children) {
+      // @ts-ignore
       const element = parseJSXToDocument(text as JSX.Element);
       if (element) {
         this._queue.enqueue(this._setText.bind(this, element, options));

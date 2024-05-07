@@ -6,6 +6,7 @@ import { RendererNode, createApp } from 'vue';
  * @param scopedId
  * @returns
  */
+// @ts-ignore
 export const parseJSXToDocument = (jsxElement: JSX.Element, scopedId?: string) => {
   const app = createApp({
     render() {
@@ -18,6 +19,7 @@ export const parseJSXToDocument = (jsxElement: JSX.Element, scopedId?: string) =
   div.firstElementChild?.childNodes.forEach((child) => {
     (child as HTMLElement)?.setAttribute(`${scopedId || ''}`, '');
     if (child.childNodes.length > 0) {
+      // @ts-ignore
       parseJSXToDocument(child as unknown as JSX.Element, scopedId);
     }
   });

@@ -7,7 +7,7 @@
   </div>
 </template>
 <script setup lang="tsx">
-import { Typewriter } from '@/core';
+import { Typewriter } from '../../packages/core/dist';
 import { nextTick, onMounted, ref } from 'vue';
 
 import Person from '@/assets/logo.svg';
@@ -26,7 +26,7 @@ const typewriter = new Typewriter(typeRef, {
   onStop: () => {
     console.log('stop');
   },
-  onTextAppend: (text) => {
+  onTextAppend: (text: string) => {
     console.log(text);
   },
 });
