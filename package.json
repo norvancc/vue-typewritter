@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build:run": "cd src/core && esno scripts/build.ts",
-    "build:core": "tsc --outDir src/core/dist src/core/*.ts",
+    "build:core": "cd packages/core && esno scripts/build.ts",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",

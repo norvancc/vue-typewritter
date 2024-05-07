@@ -6,7 +6,9 @@ const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 
-const FILES_COPY_ROOT = ['LICENSE', 'README.md'];
+const FILES_COPY_ROOT = ['LICENSE'];
+
+const README_ROOT = ['README.md'];
 
 const TYPES_ROOT = ['types.d.ts'];
 
@@ -32,6 +34,11 @@ async function build() {
   // Copy meta
   META_ROOT.forEach((file) => {
     exec(`cp ${path.join(__dirname, '../meta/', file)} ${path.join(__dirname, '../dist')}`);
+  });
+
+  // Copy README
+  README_ROOT.forEach((file) => {
+    exec(`cp ${path.join(__dirname, '../../../', file)} ${path.join(__dirname, '../dist')}`);
   });
 
   console.log('Done!');

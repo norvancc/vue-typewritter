@@ -78,20 +78,17 @@ const stop = () => {
 
 ```
 
- 
-
 ## 📦 Install
 
 > 🎩 From v1.0, it works for Vue 2 & 3
 
 ```bash
-npm i typewriter
+npm i vue-typewriter
 ```
 
 ###### Demos
 
 Not yet.
-
 
 ## 📄 License
 
