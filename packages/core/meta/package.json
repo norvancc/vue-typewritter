@@ -1,6 +1,6 @@
 {
   "name": "vue-typewritter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This is a typewritter effect for vue3 and typescript",
   "keywords": [
     "typescript",
@@ -8,6 +8,12 @@
     "vue3",
     "vue"
   ],
+  "homepage": "https://github.com/norvancc/typewritter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/norvancc/typewritter.git",
+    "directory": "packages/core"
+  },
   "exports": {
     ".": {
       "types": "./index.d.ts",
