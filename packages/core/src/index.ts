@@ -1,6 +1,5 @@
-import { Ref, ref, RendererNode } from 'vue';
 import { CallbackQueue } from './CallbackQueue';
-import { Callback, TPopTextOptions, TSetTextOptions, TTextOptions, TTypewriterOptions } from '../types/types';
+import { Callback, TPopTextOptions, TSetTextOptions, TTextOptions, TTypewriterOptions, RendererNode } from '../types/types';
 import { parseJSXToDocument, parseRendererNodeToDocument, sleep } from './utils';
 
 type TTypewritterReturnType = {
@@ -11,28 +10,18 @@ type TTypewritterReturnType = {
   setSpeed: (speed: number) => TTypewritterReturnType;
 };
 
+const TMediaTags = ['IMG', 'VIDEO', 'AUDIO'];
+
 /**
  * A typewriter effect library that supports chain calling
- * @param refObj The ref object that contains the text to be displayed
+ * @param instance The selector or the element to be displayed
  * @returns A Typewriter instance
  */
 export class Typewriter {
   /**
    * The ref object that contains the text to be displayed
    */
-  private _text: Ref<string> = ref('');
-  /**
-   * Get the text to be displayed
-   * @returns The ref object that contains the text to be displayed
-   */
-  get text(): string {
-    return this._text.value;
-  }
-
-  /**
-   * The ref object that contains the text to be displayed
-   */
-  private _instance: Ref<HTMLElement>;
+  private _instance?: HTMLElement;
 
   /**
    * The global typing speed
@@ -48,10 +37,25 @@ export class Typewriter {
 
   /**
    * Create a new Typewriter instance
-   * @param refObj The ref object that contains the text to be displayed
+   * @param instance The selector or the element to be displayed
    */
-  constructor(instance: Ref<HTMLElement>, options?: TTypewriterOptions) {
-    this._instance = instance;
+  constructor(instance?: string | HTMLElement | null, options?: TTypewriterOptions) {
+    if (!instance) {
+      console.warn('[Typewritter]:You must provide an element or a selector to create a Typewriter instance.');
+      return;
+    }
+
+    if (typeof instance === 'string') {
+      const dom = document.querySelector(instance);
+      if (!dom) {
+        console.warn('[Typewritter]:The element is not found');
+        return;
+      }
+      this._instance = dom as HTMLElement;
+    } else {
+      this._instance = instance;
+    }
+
     if (options) {
       this._speed = options.speed || 100;
       this._queue.setOptions(options);
@@ -61,7 +65,7 @@ export class Typewriter {
 
   /** =============================== Load Text ================================ */
   /**
-   * Load class from the class list
+   * Load text node and apply the options to the text node
    * @param text The text to be loaded
    * @param textClass The effect to be loaded
    * @returns The Typewriter instance
@@ -82,6 +86,26 @@ export class Typewriter {
     } else {
       return text;
     }
+  }
+
+  /**
+   * Load node and apply the options to the media node
+   * @param node The media to be loaded
+   * @param textClass The effect to be loaded
+   */
+  private _loadNode(node: HTMLElement, textOptions?: TTextOptions): HTMLElement {
+    if (!TMediaTags.includes(node.tagName)) {
+      node.textContent = '';
+      return node;
+    }
+    node.classList.add('typewritterItem', ...(textOptions?.class || []));
+    if (typeof textOptions?.style === 'string') {
+      node.setAttribute('style', textOptions.style);
+    }
+    if (typeof textOptions?.style === 'object') {
+      node.setAttribute('style', textOptions.style?.cssRules?.[0]?.cssText);
+    }
+    return node;
   }
 
   /** =============================== Set Text ================================ */
@@ -118,17 +142,17 @@ export class Typewriter {
           // create a span element for each character
           const span = this._loadText(text, options?.textOptions);
           element.append(span);
-          this._text.value += text;
           // call the onTextAppend callback
           this._onTextAppend && this._onTextAppend(text);
           await sleep(options?.speed ?? this._speed);
         }
       } else {
-        // if the node is an element node, append the element to the element
-        const nodeText = (node as HTMLElement).innerHTML || '';
-        node.textContent = '';
-        element.append(node);
-        await this._setAndParseText(nodeText || '', node as HTMLElement, options);
+        // remember current element's text content
+        const nodeText = node.textContent || '';
+        // deal with node and apply the options to the media node
+        const nodeItem = this._loadNode(node as HTMLElement, options?.textOptions);
+        element.append(nodeItem);
+        await this._setAndParseText(nodeText || '', nodeItem, options);
       }
     }
 
@@ -137,7 +161,11 @@ export class Typewriter {
 
   private async _setText(text: string | ChildNode, options?: TSetTextOptions): Promise<Typewriter> {
     return new Promise(async (resolve) => {
-      await this._setAndParseText(text, this._instance.value, options);
+      if (!this._instance) {
+        console.warn('[Typewriter]:The element is not found');
+        return;
+      }
+      await this._setAndParseText(text, this._instance, options);
 
       await sleep(options?.speed ?? this._speed);
       resolve(this);
@@ -180,8 +208,13 @@ export class Typewriter {
       const child = element.childNodes[element.childNodes.length - 1];
 
       if (!child) {
-        await this._popAndParseText(j, parent, parent, options);
+        if (parent.childNodes.length) {
+          await this._popAndParseText(j, parent, parent, options);
+        } else {
+          continue;
+        }
       }
+
       if (!child?.textContent) {
         child?.remove();
         continue;
@@ -192,6 +225,9 @@ export class Typewriter {
         await sleep(options?.speed ?? this._speed);
       } else if (child?.childNodes?.length > 0) {
         await this._popAndParseText(j, child as HTMLElement, element, options);
+        if (!child?.childNodes?.length) {
+          child.remove();
+        }
         break;
       } else {
         await this._popAndParseText(j, parent, parent, options);
@@ -200,7 +236,11 @@ export class Typewriter {
   }
   private async _popText(length: number, options?: TPopTextOptions): Promise<Typewriter> {
     return new Promise(async (resolve) => {
-      await this._popAndParseText(length, this._instance.value, this._instance.value, options);
+      if (!this._instance) {
+        console.warn('[Typewriter]:The element is not found');
+        return;
+      }
+      await this._popAndParseText(length, this._instance, this._instance, options);
       resolve(this);
     });
   }

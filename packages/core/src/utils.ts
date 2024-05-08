@@ -1,4 +1,5 @@
-import { RendererNode, createApp } from 'vue';
+import { RendererNode } from 'types/types';
+import { createApp } from 'vue';
 
 /**
  *  Parse JSX to document

@@ -69,7 +69,8 @@ export class CallbackQueue {
     this._onStart = options.onStart || null;
     this._onClear = options.onClear || null;
     this._onStep = options.onStep || null;
-    this._immediate = options.immediate || true;
+
+    this._immediate = options.immediate ?? true;
   }
 
   enqueue(callback: Callback): void {

@@ -1,6 +1,6 @@
 {
-  "name": "typewritter",
-  "version": "1.0.0",
+  "name": "vue-typewritter",
+  "version": "0.0.3",
   "description": "This is a typewritter effect for vue3 and typescript",
   "keywords": [
     "typescript",
@@ -19,6 +19,6 @@
   "main": "./index.cjs",
   "module": "./index.mjs",
   "types": "./index.d.ts",
-  "author": "Norvan CC",
+  "author": "norvancc",
   "license": "MIT"
 }

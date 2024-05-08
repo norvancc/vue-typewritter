@@ -10,7 +10,10 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "docs:dev": "vitepress dev doc",
+    "docs:build": "vitepress build doc",
+    "docs:preview": "vitepress preview doc"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^4.2.0",
@@ -31,9 +34,11 @@
     "jsdom": "^24.0.0",
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
+    "sass": "^1.77.0",
     "typescript": "~5.4.0",
     "uglify-js": "^3.17.4",
     "vite": "^5.2.8",
+    "vitepress": "^1.1.4",
     "vitest": "^1.4.0",
     "vue-tsc": "^2.0.11"
   }
