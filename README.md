@@ -1,9 +1,9 @@
 <p align="center">
 <a href="https://github.com/norvancc/typewritter#gh-light-mode-only">
-  <img src="https://github.com/norvancc/typewritter/raw/main/public/logo_dark.png#gh-dark-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
+  <img src="https://github.com/norvancc/typewritter/raw/main/public/logo_light.png#gh-light-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
 </a>
 <a href="https://github.com/norvancc/typewritter#gh-dark-mode-only">
-  <img src="https://raw.githubusercontent.com/norvancc/typewritter/main/public/logo_light.png#gh-light-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
+  <img src="https://raw.githubusercontent.com/norvancc/typewritter/main/public/logo_dark.png#gh-dark-mode-only" alt="Typewritter - A typewritter effect for vue3 and typescript" width="300">
 </a>
 <br>
  A typewritter effect for vue3 and typescript

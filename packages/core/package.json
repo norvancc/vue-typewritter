@@ -1,6 +1,6 @@
 {
   "name": "typewritter",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "This is a typewritter effect for vue3 and typescript",
   "main": "index.ts",
   "type": "module",
