@@ -8,6 +8,17 @@
 <br>
  A typewritter effect for vue3 and typescript
 </p>
+<p align="center"> 
+<a href="https://www.npmjs.com/package/vue-typewritter">
+  <img src="https://img.shields.io/badge/npm-v0.0.4-blue" alt="Typewritter - A typewritter effect for vue3 and typescript" alt="NPM version">
+</a>
+<a href="https://github.com/norvancc/vue-typewritter?tab=MIT-1-ov-file">
+  <img src="https://img.shields.io/badge/license-MIT-yellow" alt="Typewritter - A typewritter effect for vue3 and typescript" alt="LICENSE">
+</a>
+<a href="http://typewritter.norvan.cc">
+  <img src="https://img.shields.io/badge/docs & demo-green" alt="Typewritter - A typewritter effect for vue3 and typescript" alt="Docs & Demo">
+</a>
+</p>
 
 ## 🚀 Features
 
