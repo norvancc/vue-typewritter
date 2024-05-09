@@ -1,6 +1,6 @@
 {
   "name": "vue-typewritter",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This is a typewritter effect for vue3 and typescript",
   "keywords": [
     "typescript",
